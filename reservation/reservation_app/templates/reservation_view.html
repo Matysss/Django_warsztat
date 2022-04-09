@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body bgcolor=#deb887>
+<form action="" method="POST">
+    {% csrf_token %}
+    <center><P><FONT SIZE=6>Rezerwowanie Sal Konferencyjnych</FONT></P></center>
+    <!-- Wszystkie sale -->
+     {% for room in rooms %}
+        <li>{{ room.name_room }}</li>
+    {% endfor %}
+    <!-- Przycisk Menu -->
+    <center>
+    <label>
+        <input type="submit" name="show_all_rooms" value="Show all rooms"><br>
+    </label>
+        <input type="Submit" name="add_room" value="Add Room"><br>
+    <label>
+    </center>
+    </label>
+    <!-- positive Add Room -->
+    {%if message%}
+        {{message}}
+    {% endif%}
+</form>
+</body>
+</html>

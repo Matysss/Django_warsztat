@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+.dot_is {
+  height: 15px;
+  width: 15px;
+  background-color: green;
+  border-radius: 50%;
+  display: inline-block;
+}
+.dot_not {
+  height: 15px;
+  width: 15px;
+  background-color: red;
+  border-radius: 50%;
+  display: inline-block;
+}
+thead, th, td{
+    border: 1px solid black;
+    border-radius: 10px;
+    border-collapse: collapse;
+    text-align: left;
+    background-color:lightgoldenrodyellow;
+}
+
+</style>
+<body bgcolor="#d3d3d3">
+<form action="" method="POST">
+    {% csrf_token %}
+    <table style="width:100%;">
+        <thead>
+        <tr>
+            <th scope="col" class="col-1">#</th>
+            <th scope="col" class="col-2">Nazwa</th>
+            <th scope="col" class="col-1">Pojemnosc</th>
+            <th scope="col" class="col-5">Dostepnosc rzutnika</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for room in rooms %}
+        <tr>
+            <th scope="row" class="col-1">{{room.id}}</th>
+            <td class="col-2">
+                <a>{{ room.name_room }}</a>
+            </td>
+            <td class="col-3">{{room.capacity_room}}</td>
+            {% if room.projector_available %}
+                <td><span class="dot_is"></span></td>
+            {% else %}
+                <td><span class="dot_not"></span></td>
+            {% endif %}
+            <td>
+                <a href="edit/">Edit</a>
+            </td>
+            <td>
+                <a href="reservation/">Reservation</a>
+            </td>
+            <td>
+                <a href="delete/">Delate</a>
+            </td>
+            {% endfor %}
+        </tr>
+        </tbody>
+    </table>
+    <input type="submit" name="back_button" value="Back">
+</form>
+</body>
+</html>

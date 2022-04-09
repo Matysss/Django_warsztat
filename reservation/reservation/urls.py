@@ -1,3 +1,4 @@
+
 """reservation URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -16,6 +17,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from reservation_app.views import (
+    ReservationViews,
+    AddNewRoomView,
+    ShowAllRooms,
+
+)
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', ReservationViews.as_view(), name='reservation-views'),
+    path('add_room_view/', AddNewRoomView.as_view(), name='add-room'),
+    path('show_all_rooms/', ShowAllRooms.as_view(), name='show-all-rooms')
 ]

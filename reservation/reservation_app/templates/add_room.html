@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<label>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <label>
+            Nazwa Sali:<br>
+            <input type="text" name="title_room"><br>
+        </label>
+        <label>
+            Pojemność Sali:<br>
+            <input type="number" name="volume_room"><br>
+        </label>
+        <label>
+            <input type="checkbox" value="Dostepnosc Projektora" name="avilable">
+            <label for="avilable">Dostepna</label>
+        </label>
+        <label><br>
+            <input type="submit" name="page_button" value="Create Room">
+            <input type="submit" name="page_button" value="Back">
+        </label>
+        <!--Error Form-->
+        <br>
+        {% if error %}
+            {{error}}
+        {% endif %}
+        <!-- positive Add Room -->
+        {%if message%}
+            {{message}}
+        {% endif%}
+    </form>
+</body>
+</html>
